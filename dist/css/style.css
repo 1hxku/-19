@@ -1,0 +1,103 @@
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
+@media (max-width: 576px) {
+    #roomsCount > .card-body{
+        background: white; /* url(/img/roomsCount.png), rgb(10,10,10);*/
+        background-position-x: center;
+        background-position-y: center;
+        background-size: cover;
+    }
+    #roomsCount > img{
+        display: none;
+    }
+    #paymentMethods > .card-body{
+        background: white; /* url(/img/paymentMethods.png);*/
+        background-position-x: center;
+        background-position-y: center;
+        background-size: cover;
+    }
+    #paymentMethods > img{
+        display: none;
+    }
+    .card{
+        background-color: rgba(255,255,255,1);
+        color: black;
+        border-radius: 10px;
+    }
+    .card-body{
+        border-radius: 10px;
+    }
+    h1.v{
+        display: none;
+    }
+}
+@media (min-width: 576px) {
+    #paymentMethods > .card-body{
+        background: none;
+        background-color: white;
+    }
+    #paymentMethods > img{
+        display: block;
+    }
+    .card{
+        background-color: rgba(255,255,255,1);
+        color: black;
+        border-radius: 10px;
+    }
+    .card-body{
+        border-radius: 10px 0 0 10px;
+    }
+    h1.v{
+        writing-mode:vertical-rl;
+    }
+}
+#roomsCountSlide{
+    background: url(/img/home.jpg) no-repeat;
+    background-size: cover;
+}
+#paymentMethodsSlide
+{
+    background: url(/img/hall.jpg) no-repeat;
+    background-size: cover;
+}
+.slide{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.slide-inner{
+    display: flex;
+    flex-direction: row;
+    height: 65vh;
+}
+.bg-orange-300{
+    background-color: #feb272;
+}
+.bg-blue-400{
+    background-color: #3d8bfd;
+}
+.skip{
+    height: 10vh;
+}
+
+
+img.card{
+    border-radius: 0 10px 10px 0;
+}
+
+.rw{
+    width: 50px;
+}
+
+.card-next-btn{
+    border-radius: 5px;
+    border: solid 1px grey ;
+    color: black;
+}
+
+.form-bg{
+    color: black;
+    background-color: white;
+    border-radius: 15px;
+}

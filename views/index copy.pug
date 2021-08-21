@@ -1,0 +1,99 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+        title Document
+
+        link(
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
+            rel="stylesheet" 
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
+            crossorigin="anonymous"
+        )
+        link(rel="stylesheet", href="/css/style.css")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet")
+
+        script(
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" 
+            crossorigin="anonymous"
+        )
+    body
+        .container-sm
+            img(src="/img/navbar_logo.png" alt="" width="180" height="100" class="d-inline-block align-text-top")
+        
+        .slide.h-100.bg-blue-400.dropping
+            .skip
+            .container-sm.text-light
+                h1.mx-5 Количество Комнат
+            #roomsCount.container-sm.slide-inner
+                h1.v Количество Комнат
+                .card-body.card
+                    small.text-muted Выберите 1 или Несколько Вариантов
+                    hr
+                    .btn-group-vertical(role="group")
+                        label.btn.btn-outline-dark
+                            input.btn-check(autocomplete="off", type="checkbox")
+                            p Студия
+                        label.btn.btn-outline-dark
+                            input.btn-check(autocomplete="off", type="checkbox")
+                            p 1-Комнатная
+                        label.btn.btn-outline-dark   
+                            input.btn-check(autocomplete="off", type="checkbox")
+                            p 2-Комнатная
+                        label.btn.btn-outline-dark
+                            input.btn-check(autocomplete="off", type="checkbox")
+                            p 3-Комнатная
+                    button(disabled).btn
+                        a(href='#step2').btn.card-next-btn К Способам Оплаты
+                img(src="/img/roomsCount.png").card
+                
+        .slide.h-100.bg-orange-300
+            #step2.skip
+            .container-sm.text-light
+                h1.mx-5 Способы Оплаты
+            #paymentMethods.container-sm.slide-inner
+                h1.v Способы Оплаты
+                .card-body.card
+                    small.text-muted Выберите 1 или Несколько Вариантов
+                    hr
+                    .btn-group-vertical(role="group")
+                        label.btn.btn-outline-primary
+                            input.btn-check(autocomplete="off", type="checkbox")
+                            p Полная Оплата
+                        label.btn.btn-outline-primary
+                            input.btn-check(autocomplete="off", type="checkbox")
+                            p Ипотека
+                        label.btn.btn-outline-primary   
+                            input.btn-check(autocomplete="off", type="checkbox")
+                            p Рассрочка
+                    button(disabled)#searchBtn.btn.my-2
+                        a(href="#step3").btn.card-next-btn Найти
+                img(src="/img/paymentMethods.png").card
+        .h-100.bg-dark
+            #step3.skip
+            .container-sm.text-light
+                h1 Поиск
+            
+            .container-sm.card
+                .card-body.form-bg
+                    h4#searchTitle.card-title Ничего Не Найдено...
+                    form#searhForm(hidden)
+                        .w-50
+                            .mb-3 
+                                label(for="name").form-label Имя
+                                input(type="name")#name.form-control
+                            .mb-3 
+                                label(for="phone").form-label Телефон
+                                input(type="phone")#phone.form-control
+                            //- .mb-3 
+                            //-     input(type="checkbox")#privacyPolitycs.form-check-input
+                            //-     label(for="exampleInputEmail1").form-check-label.mx-2 Ознакомлен/а с Политикой Конфиденциальности
+                        button(disabled)#send.btn.btn-primary Отправить
+            
+        script(src="/js/list.js")
+        script(src="/js/main.js")
