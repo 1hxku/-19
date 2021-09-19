@@ -3,8 +3,10 @@ const s = selector => document.querySelector(selector)
 const l = console.log
 
 // 2 Серии чек-боксов для проверки заполненности формы
-const Rooms = new List('#roomsCount > .card-body')
-const PaymentMethods = new List('#paymentMethods > .card-body')
+const Rooms = new List('#roomsCount')
+const Budget = new List('#budget')
+const PaymentMethods = new List('#paymentMethods')
+
 const SearchBtn = s('#searchBtn')
 
 // Заселектил Форму, Текст над Формой, 
@@ -12,7 +14,7 @@ const Form = s('#searhForm')
 const FormTitle = s('#searchTitle')
 
 SearchBtn.onclick = async () => {
-    if(!Rooms.has_checked || !PaymentMethods.has_checked) return
+    if(!Rooms.has_checked || !Budget.has_checked || !PaymentMethods.has_checked) return
 
     Form.setAttribute('hidden', '')
 
@@ -33,7 +35,7 @@ SearchBtn.onclick = async () => {
     let lst = Number(String(n)[1])
 
     // Заебись, придумал алгоритм который по последней цифре числа пишет правильное окончание у слов, а то пиздец "найден 82 крартир"
-    FormTitle.innerText = `По Вашему Запросу Найден${lst == 1 ? 'a' : 'о'} ${n} Квартир${!lst || n < 21 || (lst > 4 & n > 21) ? '' : lst == 1 ? 'a' : 'ы'}.\nЗаполните Форму, чтобы узнать больше.`
+    FormTitle.innerText = `По Вашему Запросу Найден${lst == 1 ? 'a' : 'о'} ${n} Квартир${!lst || n < 21 || (lst > 4 & n > 21) ? '' : lst == 1 ? 'a' : 'ы'}.\nОставьте телефон и наш менеджер свяжется с вами в ближайшее время!`
     
     // Проявляю Форму
     Form.removeAttribute('hidden')
@@ -65,9 +67,12 @@ SendButton.onclick = async () => {
     const name = s('#name')
     const phone = s('#phone')
 
+    
+
     await fetch(
-        `http://localhost:3000/`
-        + `callback?rooms=${encodeURI(Rooms.buffer.join(', '))}`
+        this.window.location.origin
+        + `/callback?rooms=${encodeURI(Rooms.buffer.join(', '))}`
+        + `&budget=${encodeURI(Budget.buffer.join(', '))}`
         + `&payment_methods=${encodeURI(PaymentMethods.buffer.join(', '))}`
         + `&name=${encodeURI(name.value)}`
         + `&phone=${encodeURI(phone.value)}`
@@ -75,4 +80,5 @@ SendButton.onclick = async () => {
 
     // Перезагрузка страницы чтоб какие-нибудь додики не дебажили ее
     location.reload() 
+    
 }

@@ -1,8 +1,8 @@
 const express = require('express')
 const fetch = require('node-fetch')
-const config = require('./config')
+const {port, bot} = require('./config')
 const l = console.log
-const telegram_bot_url = 'https://api.telegram.org/bot' + config.bot_api_key
+const telegram_bot_url = 'https://api.telegram.org/bot' + bot.api_key
 
 // Создание Сервера
 const app = express()
@@ -22,14 +22,18 @@ app.get('/callback', async function(req, res){
     let a = req.query
     let msg 
         = `🏢 Кол-во Комнат: ${a.rooms}\n`
+        + `💵 Бюджет: ${a.budget}\n`
         + `💳 Способы Оплаты: ${a.payment_methods}\n`
         + `_______________________\n`
         + `🏷 Имя: ${a.name}\n`
         + `📞 Телефон: ${a.phone}`
-    await fetch(telegram_bot_url+`/SendMessage?chat_id=${config.callback_chat_id}&text=${encodeURI(msg)}`)
+    await fetch(telegram_bot_url+`/SendMessage?chat_id=${bot.callback_chat_id}&text=${encodeURI(msg)}`)
 })
 
 // Запуск Сервера
-app.listen(config.port, () => {
-    l(`Example app listening at http://localhost:${config.port}`)
+app.listen(port, () => {
+    l(
+        'Example app listening at ' 
+        + (port == 80 ? 'http://localhost' : `http://localhost:${port}`)
+    )
 })

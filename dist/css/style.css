@@ -1,103 +1,111 @@
-*{
+* {
     font-family: 'Open Sans', sans-serif;
 }
+:root{
+    --indent: 0.375em;
+}
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
 
-@media (max-width: 576px) {
-    #roomsCount > .card-body{
-        background: white; /* url(/img/roomsCount.png), rgb(10,10,10);*/
-        background-position-x: center;
-        background-position-y: center;
-        background-size: cover;
-    }
-    #roomsCount > img{
-        display: none;
-    }
-    #paymentMethods > .card-body{
-        background: white; /* url(/img/paymentMethods.png);*/
-        background-position-x: center;
-        background-position-y: center;
-        background-size: cover;
-    }
-    #paymentMethods > img{
-        display: none;
-    }
-    .card{
-        background-color: rgba(255,255,255,1);
-        color: black;
-        border-radius: 10px;
-    }
-    .card-body{
-        border-radius: 10px;
-    }
-    h1.v{
-        display: none;
-    }
+.group > label {
+    position: static;
+
+    max-width: 40vw;
+    min-width: 15vw;
+
+    min-height: 60px;
+    max-height: 75px;
+
 }
-@media (min-width: 576px) {
-    #paymentMethods > .card-body{
-        background: none;
-        background-color: white;
-    }
-    #paymentMethods > img{
-        display: block;
-    }
-    .card{
-        background-color: rgba(255,255,255,1);
-        color: black;
-        border-radius: 10px;
-    }
-    .card-body{
-        border-radius: 10px 0 0 10px;
-    }
-    h1.v{
-        writing-mode:vertical-rl;
-    }
+
+.group > label > p {
+    margin-left: auto;
+    margin-right: auto;
 }
-#roomsCountSlide{
-    background: url(/img/home.jpg) no-repeat;
-    background-size: cover;
+.header {
+    text-transform: uppercase;
+    margin-top: 5vh;
 }
-#paymentMethodsSlide
-{
-    background: url(/img/hall.jpg) no-repeat;
-    background-size: cover;
+.btn-checkbox {
+    background-color: rgb(255, 255, 255);
+    color:rgb(27, 27, 27)
 }
-.slide{
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.slide-inner{
-    display: flex;
-    flex-direction: row;
-    height: 65vh;
-}
-.bg-orange-300{
-    background-color: #feb272;
-}
-.bg-blue-400{
-    background-color: #3d8bfd;
-}
-.skip{
-    height: 10vh;
+.btn-checkbox:hover {
+    background-color: rgba(250, 250, 250, 0.675);
+    color: rgb(128, 128, 128);
 }
 
 
-img.card{
-    border-radius: 0 10px 10px 0;
+.slide {
+    height: 100vh;
 }
 
-.rw{
-    width: 50px;
+img.background {
+    filter: blur(3px) brightness(85%) contrast(90%);
+    height: 100vh;
+    max-width: 100vw;
+    top: 0;
+    object-fit: cover;
 }
-
-.card-next-btn{
+.slide-inner {
+    position: relative;
+    top: -90vh;
+}
+.card-next-btn {
+    margin-top: 1em;
     border-radius: 5px;
-    border: solid 1px grey ;
-    color: black;
+    border: solid 1px white ;
+    color: white;
 }
-
-.form-bg{
+.form-bg {
     color: black;
     background-color: white;
     border-radius: 15px;
+}
+
+.center > * {
+    margin-top: var(--indent);
+}
+.center > *:nth-child(2) {
+    margin-left: var(--indent);
+}
+@media (max-width: 576px) {
+    .center {
+        margin-left: 15vw;
+    }
+    .group {
+        display: block;
+    }
+    .group > label{
+        margin-top: var(--indent);
+        min-width: 60vw;
+    }
+    .form-control {
+        width: 50vw;
+    }
+}
+@media (min-width: 576px) {
+    .group {
+        display: flex;
+        grid-gap: var(--indent);
+    }
+    .group > label{
+        display: flex;
+        align-items: center;
+    }
+    .center > * {
+        margin-top: var(--indent);
+        padding: 0;
+    }
+    .form-control {
+        width: 20vw;
+    }
+}
+
+.active{
+    background-color: rgba(105, 105, 105, 0.675);
+    color: white;
 }
